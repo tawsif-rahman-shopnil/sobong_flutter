@@ -9,10 +9,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('WebView Example'),
+          backgroundColor: Color.fromRGBO(22, 32, 45, 255), // Set the background color
+          elevation: 0, // Remove the elevation
         ),
         body: WebViewExample(),
       ),
+      debugShowCheckedModeBanner: false, // Remove the debug banner
     );
   }
 }
@@ -43,8 +45,10 @@ class _WebViewExampleState extends State<WebViewExample> {
         print('Page has finished loading: $url');
       },
       onWebResourceError: (WebResourceError error) {
-        // Handle WebView errors
         print('Error: ${error.description}');
+        print('Error Code: ${error.errorCode}');
+        print('Error Domain: ${error.domain}');
+        print('Error Failing URL: ${error.failingUrl}');
       },
     );
   }
